@@ -1,21 +1,26 @@
-import * as types from '../actions/types'
+import * as types from "../actions/types";
 const initialState = {
-	posts: [],
-}
+  posts: [],
+};
 
 const postReducer = (state = initialState, action) => {
-	switch (action.type) {
-		case types.FETCH_POSTS:
-			return {
-				...state,
-				posts: action.payload,
-			}
+  switch (action.type) {
+    case types.FETCH_POSTS:
+      return {
+        ...state,
+        posts: action.payload,
+      };
 
-		default:
-			return {
-				...state,
-			}
-	}
-}
+    case types.CREATE_POST:
+      return {
+        ...state,
+        posts: [...state.posts, action.paylaod],
+      };
+    default:
+      return {
+        ...state,
+      };
+  }
+};
 
-export default postReducer
+export default postReducer;
